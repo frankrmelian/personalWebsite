@@ -1,16 +1,33 @@
-<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-  {{#each ApiResponse}}
-      {{{name}}}   
-  {{/each }}
-
-    <div class="card">
-      <div class="card-header">
-        Featured
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="album py-5 bg-light">
+   <div class="container">
+     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {{#if ApiResponse}}
+     {{#each ApiResponse }}
+     <div class="col">
+          <div class="card shadow-sm">
+           <svg class="bd-placeholder-img card-img-top" width="100%" height="50%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder:{{name}}" preserveAspectRatio="xMidYMid slice" focusable="false">
+           <title>{{name}} </title>
+           <rect width="100%" height="100%" fill="#55595c"></rect>
+           <text x="50%" y="50%" fill="#eceeef" dy=".4em">{{name}} </text>
+           </svg>
+            <div class="card-body">
+              <p class="card-text">{{description}}</p>
+             
+                <div class="card-footer justify-content-between">
+                 <span class="badge bg-dark">Fork:{{fork}}</span>
+                 <span class="badge bg-dark">Public:{{visibility}}</span> 
+                </div>
+                <small class="text-muted">Last Updated:{{updated_at}}</small>
+            </div>
+          </div>
+        </div>
+         {{/each}}
+     {{else}}
       </div>
     </div>
+    
+     <div class="alert alert-primary text-dark" role="alert">
+      Error data cannot be loaded at this time please check back later
+     </div>  
+  {{/if}}
 </div>
